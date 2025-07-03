@@ -1,5 +1,6 @@
 package com.events.api.domain.event;
 
+import com.events.api.domain.address.Address;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -24,6 +25,17 @@ public class Event {
     private boolean remote;
 
     private Date date;
+
+    @OneToOne(mappedBy = "event", cascade = CascadeType.ALL)
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public UUID getId() {
         return id;
