@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public interface EventRepository extends JpaRepository<Event, UUID> {
@@ -25,4 +26,9 @@ public interface EventRepository extends JpaRepository<Event, UUID> {
                                                     @Param("startDate") Date startDate,
                                                     @Param("endDate") Date endDate,
                                                     Pageable pageable);
+
+    @Query("SELECT e.id AS id, e.title AS title, e.description AS description, e.date AS date, e.imgUrl AS imgUrl, e.eventUrl AS eventUrl, e.remote AS remote, a.city AS city, a.uf AS uf " +
+            "FROM Event e JOIN Address a ON e.id = a.event.id " +
+            "WHERE (:title = '' OR e.title LIKE %:title%)")
+    List<Event> findEventsByTitle(@Param("title") String title);
 }
