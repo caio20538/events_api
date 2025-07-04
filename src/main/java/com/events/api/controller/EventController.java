@@ -1,6 +1,7 @@
 package com.events.api.controller;
 
 import com.events.api.domain.event.Event;
+import com.events.api.domain.event.EventDetailsDTO;
 import com.events.api.domain.event.EventRequestDTO;
 import com.events.api.domain.event.EventResponseDTO;
 import com.events.api.services.EventService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/event")
@@ -46,5 +48,17 @@ public class EventController {
         List<EventResponseDTO> events = eventService.getFilteredEvents(page, size, city, uf, startDate, endDate);
         return ResponseEntity.ok(events);
 
+    }
+
+    @GetMapping("/{eventId}")
+    public ResponseEntity<EventDetailsDTO> getEventDetails(@PathVariable UUID eventId) {
+        EventDetailsDTO eventDetails = eventService.getEventDetails(eventId);
+        return ResponseEntity.ok(eventDetails);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<EventResponseDTO>> getSearchEvents(@RequestParam String title) {
+        List<EventResponseDTO> events = eventService.searchEvents(title);
+        return ResponseEntity.ok(events);
     }
 }
