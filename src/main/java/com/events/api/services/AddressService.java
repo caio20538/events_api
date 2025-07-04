@@ -6,6 +6,9 @@ import com.events.api.domain.event.EventRequestDTO;
 import com.events.api.repositories.AddressRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class AddressService {
 
@@ -22,5 +25,9 @@ public class AddressService {
         address.setEvent(event);
 
         return addressRepository.save(address);
+    }
+
+    public Optional<Address> findByEventId(UUID eventId) {
+        return addressRepository.findByEventId(eventId);
     }
 }
