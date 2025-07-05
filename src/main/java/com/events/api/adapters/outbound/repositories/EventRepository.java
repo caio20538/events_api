@@ -1,4 +1,4 @@
-package com.events.api.repositories;
+package com.events.api.adapters.outbound.repositories;
 
 import com.events.api.domain.event.Event;
 import org.springframework.data.domain.Page;

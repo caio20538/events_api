@@ -1,10 +1,10 @@
-package com.events.api.services;
+package com.events.api.application.services;
 
 import com.events.api.domain.coupon.Coupon;
 import com.events.api.domain.coupon.CouponRequestDTO;
 import com.events.api.domain.event.Event;
-import com.events.api.repositories.CouponRepository;
-import com.events.api.repositories.EventRepository;
+import com.events.api.adapters.outbound.repositories.CouponRepository;
+import com.events.api.adapters.outbound.repositories.EventRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

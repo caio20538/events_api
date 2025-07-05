@@ -1,10 +1,10 @@
-package com.events.api.controller;
+package com.events.api.adapters.inbound.controller;
 
 import com.events.api.domain.event.Event;
 import com.events.api.domain.event.EventDetailsDTO;
 import com.events.api.domain.event.EventRequestDTO;
 import com.events.api.domain.event.EventResponseDTO;
-import com.events.api.services.EventService;
+import com.events.api.application.services.EventService;
 import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;

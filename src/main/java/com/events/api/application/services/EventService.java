@@ -1,4 +1,4 @@
-package com.events.api.services;
+package com.events.api.application.services;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.events.api.domain.address.Address;
@@ -7,7 +7,7 @@ import com.events.api.domain.event.Event;
 import com.events.api.domain.event.EventDetailsDTO;
 import com.events.api.domain.event.EventRequestDTO;
 import com.events.api.domain.event.EventResponseDTO;
-import com.events.api.repositories.EventRepository;
+import com.events.api.adapters.outbound.repositories.EventRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;

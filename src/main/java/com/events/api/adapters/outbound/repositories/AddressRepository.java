@@ -1,4 +1,4 @@
-package com.events.api.repositories;
+package com.events.api.adapters.outbound.repositories;
 
 import com.events.api.domain.address.Address;
 import org.springframework.data.jpa.repository.JpaRepository;

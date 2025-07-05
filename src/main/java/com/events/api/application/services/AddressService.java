@@ -1,9 +1,9 @@
-package com.events.api.services;
+package com.events.api.application.services;
 
 import com.events.api.domain.address.Address;
 import com.events.api.domain.event.Event;
 import com.events.api.domain.event.EventRequestDTO;
-import com.events.api.repositories.AddressRepository;
+import com.events.api.adapters.outbound.repositories.AddressRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

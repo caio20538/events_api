@@ -1,8 +1,8 @@
-package com.events.api.controller;
+package com.events.api.adapters.inbound.controller;
 
 import com.events.api.domain.coupon.Coupon;
 import com.events.api.domain.coupon.CouponRequestDTO;
-import com.events.api.services.CouponService;
+import com.events.api.application.services.CouponService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
