@@ -4,7 +4,6 @@ import com.events.api.domain.coupon.Coupon;
 import com.events.api.domain.coupon.CouponRequestDTO;
 import com.events.api.domain.event.Event;
 import com.events.api.adapters.outbound.repositories.CouponRepository;
-import com.events.api.adapters.outbound.repositories.JpaEventRepository;
 import com.events.api.domain.event.EventRepository;
 import org.springframework.stereotype.Service;
 
