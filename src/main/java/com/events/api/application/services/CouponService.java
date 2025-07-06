@@ -4,7 +4,7 @@ import com.events.api.domain.coupon.Coupon;
 import com.events.api.domain.coupon.CouponRequestDTO;
 import com.events.api.domain.event.Event;
 import com.events.api.adapters.outbound.repositories.CouponRepository;
-import com.events.api.adapters.outbound.repositories.EventRepository;
+import com.events.api.adapters.outbound.repositories.JpaEventRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -16,15 +16,15 @@ public class CouponService {
 
     private final CouponRepository couponRepository;
 
-    private final EventRepository eventRepository;
+    private final JpaEventRepository jpaEventRepository;
 
-    public CouponService(CouponRepository couponRepository, EventRepository eventRepository) {
+    public CouponService(CouponRepository couponRepository, JpaEventRepository jpaEventRepository) {
         this.couponRepository = couponRepository;
-        this.eventRepository = eventRepository;
+        this.jpaEventRepository = jpaEventRepository;
     }
 
     public Coupon addCouponToEvent(UUID eventId, CouponRequestDTO couponRequestDTO) {
-        Event event = eventRepository.findById(eventId)
+        Event event = jpaEventRepository.findById(eventId)
                 .orElseThrow(() -> new IllegalArgumentException("Event not found"));
 
         Coupon coupon = new Coupon();

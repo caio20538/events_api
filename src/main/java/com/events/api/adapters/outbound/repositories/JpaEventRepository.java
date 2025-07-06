@@ -1,5 +1,6 @@
 package com.events.api.adapters.outbound.repositories;
 
+import com.events.api.adapters.outbound.entities.JpaEventEntity;
 import com.events.api.domain.event.Event;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public interface EventRepository extends JpaRepository<Event, UUID> {
+public interface JpaEventRepository extends JpaRepository<JpaEventEntity, UUID> {
 
     @Query("SELECT e FROM Event e LEFT JOIN FETCH e.address a WHERE e.date >= :currentDate")
     public Page<Event> findUpcomingEvents(@Param("currentDate")Date currentDate, Pageable pageable);

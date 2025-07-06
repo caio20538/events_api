@@ -1,13 +1,17 @@
-package com.events.api.domain.event;
+package com.events.api.adapters.outbound.entities;
 
 import com.events.api.domain.address.Address;
+import com.events.api.domain.event.Event;
 import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.UUID;
 
-public class Event {
-
+@Table(name = "event")
+@Entity
+public class JpaEventEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private String title;
@@ -22,27 +26,18 @@ public class Event {
 
     private Date date;
 
+    @OneToOne(mappedBy = "event", cascade = CascadeType.ALL)
     private Address address;
 
-    public Event() {
-    }
-
-    public Event(UUID id,
-                 String title,
-                 String description,
-                 String imgUrl,
-                 String eventUrl,
-                 boolean remote,
-                 Date date
-                 ) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.imgUrl = imgUrl;
-        this.eventUrl = eventUrl;
-        this.remote = remote;
-        this.date = date;
-
+    public JpaEventEntity(Event event) {
+        this.id = event.getId();
+        this.title = event.getTitle();
+        this.description = event.getDescription();
+        this.imgUrl = event.getImgUrl();
+        this.eventUrl = event.getEventUrl();
+        this.remote = event.isRemote();
+        this.date = event.getDate();
+        this.address = event.getAddress();
     }
 
     public Address getAddress() {
@@ -108,4 +103,5 @@ public class Event {
     public void setDate(Date date) {
         this.date = date;
     }
+
 }
